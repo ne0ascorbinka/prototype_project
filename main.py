@@ -1,8 +1,9 @@
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher
 from aiogram.types import Message
+from aiogram.filters import Command
 import asyncio
 
-API_TOKEN = '5957089360:AAH8fzbYxyZN1zGXkCJCV2cmWGn8P5K6Px0'
+API_TOKEN = '7147813660:AAEvpcci79JHLiA45Q6VXYq_3xkyZ4RGHy0'
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -10,7 +11,7 @@ dp = Dispatcher()
 # Placeholder for storing user goals
 user_goals = {}
 
-@dp.message(commands=['start'])
+@dp.message(Command("start"))
 async def send_welcome(message: Message):
     await message.answer("Welcome! Please send me your starting (minimal) daily goal and your end (maximal) daily goal, separated by a space.")
 
@@ -26,6 +27,7 @@ async def set_goals(message: Message):
 
 async def main():
     # Start polling
+    print("starting...")
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
