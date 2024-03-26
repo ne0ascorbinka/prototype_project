@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 from aiogram.filters import Command
 import asyncio
@@ -10,6 +10,11 @@ dp = Dispatcher()
 
 # Placeholder for storing user goals
 user_goals = {}
+
+@dp.message(F.text.lower().startswith("day"))
+async def read_day(message: Message):
+    day = int(message.text.split()[1])
+    await message.answer(f"So it is day #{day}")
 
 @dp.message(Command("start"))
 async def send_welcome(message: Message):
