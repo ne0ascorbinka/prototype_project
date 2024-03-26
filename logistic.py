@@ -18,9 +18,14 @@ def main() -> None:
 
     while True:
         day = int(input("day: "))
-        print(logistic_function(day, initial, final, ))
-        progress_bar = "▓" * (day - 1) + "▒" + "░" * (final - day)
-        print(progress_bar)
+        # print(logistic_function(day, initial, final, ))
+
+        from utils import geometric_progression_value
+        print(geometric_progression_value(initial, final, day))
+        
+
+        # progress_bar = "▓" * (day - 1) + "▒" + "░" * (final - day)
+        # print(progress_bar)
 
 if __name__ == "__main__":
     main()
